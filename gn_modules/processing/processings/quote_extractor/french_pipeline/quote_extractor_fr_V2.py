@@ -57,7 +57,7 @@ quoteVerbWhiteList = ['reconnaitre', 'ajouter', 'admettre', 'annoncer', 'préten
                       'soulever', 'préciser', 'résumer', 'juger', 'estimer', 'dancer', 'lancer', 
                       'nuancer', 'relever', 'constater', 'réclamer', 'remarquer', 'confier', 'observer',
                       'réagir', 'concéder', 'témoigner', 'louanger', 'demander', 'arguer', 'protester',
-                      'critiquer', 'plaider', 'poursuivre', 'trancher', 'mentionner', 'souhaiter'] + [
+                      'critiquer', 'plaider', 'poursuivre', 'trancher', 'mentionner'] + [
                       'proposer','rétorquer','marmoner','soupirer','murmurer','énoncer','exposer',
                       'exprimer','avancer','marteler','proférer','insinuer','objecter', 'déplorer','inviter', 'prêcher','défendre', 'lire', 'plaindre','recommander', 'réjouir','reconnaître','reprocher']
 #Added verbs. Ambiguous verbs: ["poursuivre","juger","avouer","reconnaître", "montrer"].

@@ -26,27 +26,46 @@ import logging
 import os
 import sys
 import traceback
-
 import json
 
-# main fun
 def get_stats(quotes):
-    stats = {}
-    n_quotes = len(quotes)
-    n_women = 0
-    n_men = 0
-    n_unknown = 0
-    for q in quotes:
-        if q["speaker_gender"] == "female":
-            n_women += 1
-        elif q["speaker_gender"] == "male":
-            n_men += 1
-        elif q["speaker_gender"] == "unknown":
-            n_unknown += 1
-    stats = {
-        "num_quotes": n_quotes,
-        "women_speakers": n_women,
-        "men_speakers": n_men,
-        "unknown_speakers": n_unknown
-    }
-    return stats
+	stats = {}
+	n_quotes = len(quotes)
+	n_women = 0
+	n_men = 0
+	n_unknown = 0
+	for q in quotes:
+		if q["speaker_gender"] == "female":
+			n_women += 1
+		elif q["speaker_gender"] == "male":
+			n_men += 1
+		elif q["speaker_gender"] == "unknown":
+			n_unknown += 1
+	stats = {
+		"num_quotes": n_quotes,
+		"women_speakers": n_women,
+		"men_speakers": n_men,
+		"unknown_speakers": n_unknown
+		}
+	return stats
+
+def main():
+	try:
+		opts, args = getopt.getopt(sys.argv[1:], "hu:p:s:f",["file-path=", "folder-path=", "output-dir="])
+		print(opts)
+	except getopt.GetoptError:
+		print("Please enter a valid command. Use -h for accepted arguments.")
+		sys.exit(2)
+	file_path = opts[0][1]
+	file_prefix = file_path[:-5]
+	with open(file_path, 'r') as f:
+		loaded = json.load(f)
+	stats = get_stats(loaded)
+	with open(file_prefix + '_stats.json', 'w') as f:
+		json.dump(stats,f)
+	
+
+if __name__ == "__main__":
+	main()
+
+# main fun

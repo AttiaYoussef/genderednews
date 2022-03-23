@@ -16,7 +16,7 @@ import re
 import stanza
 from stanza.models.common.doc import Token
 
-import gn_modules.processing.processings.quote_extractor.french_pipeline.genderization as gen
+import genderization as gen
 
 START_GUILLEMETS = set()
 END_GUILLEMETS = set()

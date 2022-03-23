@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+gn_modules/processing/processings/quote_extractor/output
 build/
 develop-eggs/
 dist/

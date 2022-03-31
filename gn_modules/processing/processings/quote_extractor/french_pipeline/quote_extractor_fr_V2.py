@@ -48,7 +48,7 @@ s'interroger, (s'est; se sont) interrogé(e; s; es); s'interroge(nt)
 
 """
 
-quoteVerbWhiteList = ['reconnaitre', 'ajouter', 'admettre', 'annoncer', 'prétendre', 'soutenir',
+quoteVerbWhiteList = ['reconnaitre', 'ajouter', 'admettre', 'lâcher', 'annoncer', 'prétendre', 'soutenir',
                       'conclure', 'confirmer', 'déclarer', 'décrire', 'assurer', 'expliquer', 'trouver',
                       'indiquer', 'informer', 'insister', 'noter', 'souligner', 'prédire', 'fournir',
                       'divulger', 'rappeler', 'répondre', 'dire', 'rapporter', 'répondre', 'affirmer',
@@ -63,7 +63,7 @@ quoteVerbWhiteList = ['reconnaitre', 'ajouter', 'admettre', 'annoncer', 'préten
 #Added verbs. Ambiguous verbs: ["poursuivre","juger","avouer","reconnaître", "montrer"].
 #Removed "croire" because it matched mostly wrong quotes
 
-nlp = stanza.Pipeline('fr',use_gpu=False)
+nlp = stanza.Pipeline('fr',use_gpu=True)
 
 # ----- Formatting Functions
 def get_str(subtree, doc):
@@ -904,10 +904,10 @@ if __name__ == '__main__':
             file_name = file_name[:dot_index]
 
             try:
-                doc_text = open(file, 'r').read()
+                doc_text = open(file, 'r', encoding = 'utf8').read()
                 doc_text = preprocess_text(doc_text)
                 quotes = quote_extractor_pipeline(doc=doc_text)
-                with open(os.path.join(OUTPUT_DIRECTORY, file_name + '.json'), 'w', encoding='utf-8') as fo:
+                with open(os.path.join(OUTPUT_DIRECTORY, file_name + '.json'), 'w', encoding='utf8') as fo:
                     json.dump(quotes, fo, indent=4, ensure_ascii=False)
             except:
                 print('EXCEPTION', file_name)
@@ -921,11 +921,11 @@ if __name__ == '__main__':
         dot_index = file_name.find('.')
         file_name = file_name[:dot_index]
         try:
-            doc_text = open(file_path, 'r').read()
+            doc_text = open(file_path, 'r',encoding='utf8').read()
             doc_text = preprocess_text(doc_text)
             quotes = quote_extractor_pipeline(doc=doc_text)
 
-            with open(os.path.join(OUTPUT_DIRECTORY, file_name + '.json'), 'w', encoding='utf-8') as fo:
+            with open(os.path.join(OUTPUT_DIRECTORY, file_name + '.json'), 'w', encoding='utf8') as fo:
                 json.dump(quotes, fo, indent=4, ensure_ascii=False)
 
             for q in quotes:

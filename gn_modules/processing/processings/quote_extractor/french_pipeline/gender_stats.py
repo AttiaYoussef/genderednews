@@ -58,10 +58,10 @@ def main():
 		sys.exit(2)
 	file_path = opts[0][1]
 	file_prefix = file_path[:-5]
-	with open(file_path, 'r') as f:
+	with open(file_path, 'r', encoding = 'utf8') as f:
 		loaded = json.load(f)
 	stats = get_stats(loaded)
-	with open(file_prefix + '_stats.json', 'w') as f:
+	with open(file_prefix + '_stats.json', 'w', encoding = 'utf8') as f:
 		json.dump(stats,f)
 	
 

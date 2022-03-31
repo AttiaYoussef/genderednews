@@ -21,7 +21,7 @@ import pandas as pd
 import os
 
 import stanza
-nlp = stanza.Pipeline("fr",use_gpu=False)
+nlp = stanza.Pipeline("fr",use_gpu=True)
 
 occupations_file = os.path.join(os.path.dirname(os.path.abspath(__file__)),'../../data/occupations_clean.csv')
 jobs_df = pd.read_csv(occupations_file, delimiter=";",index_col=0, header=None, squeeze=True)
